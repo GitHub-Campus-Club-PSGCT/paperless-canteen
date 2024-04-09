@@ -22,16 +22,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         primary: true,
-        backgroundColor: Color.fromARGB(255, 255, 237, 147),
+        backgroundColor: const Color.fromARGB(255, 255, 237, 147),
         elevation: 0,
         leading: Builder(
           builder: (context) => IconButton(
             alignment: Alignment.center,
-            padding: EdgeInsets.only(left: 10),
-            icon: Image(
+            padding: const EdgeInsets.only(left: 10),
+            icon: const Image(
               image: AssetImage("assets/icons/drawerIcon.png"),
               width: 27,
             ),
@@ -40,16 +40,16 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
         ),
-        title: Text(
+        title: const Text(
           "PSG College of Technology",
           style: TextStyle(
               color: Colors.black, fontSize: 15, fontWeight: FontWeight.w700),
         ),
         actions: [
           Container(
-            margin: EdgeInsets.only(right: 15),
+            margin: const EdgeInsets.only(right: 15),
             child: IconButton(
-              icon: Image(
+              icon: const Image(
                 image: AssetImage("assets/icons/searchIcon.png"),
                 width: 36,
               ),
@@ -72,17 +72,17 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             ListView(
               children: [
-                SizedBox(height: 10),
-                Container(
+                const SizedBox(height: 10),
+                SizedBox(
                   width: double.infinity,
                   height: 50,
                   child: ListView(
                       scrollDirection: Axis.horizontal,
-                      physics: RangeMaintainingScrollPhysics(),
+                      physics: const RangeMaintainingScrollPhysics(),
                       children: [
-                        SizedBox(width: 30),
+                        const SizedBox(width: 30),
                         ChoiceChip(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 14, vertical: 8),
                             label: Text("Order Now",
                                 style: TextStyle(
@@ -94,15 +94,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             selected: orderNowSelected,
                             selectedColor: Colors.black,
                             backgroundColor: Colors.white,
-                            side: BorderSide(color: Colors.black, width: 1),
+                            side: const BorderSide(color: Colors.black, width: 1),
                             onSelected: (bool selected) {
                               setState(() {
                                 orderNowSelected = selected;
                               });
                             }),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         ChoiceChip(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 14, vertical: 8),
                             label: Text("View Bills",
                                 style: TextStyle(
@@ -114,15 +114,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             selected: profileSelected,
                             selectedColor: Colors.black,
                             backgroundColor: Colors.white,
-                            side: BorderSide(color: Colors.black, width: 1),
+                            side: const BorderSide(color: Colors.black, width: 1),
                             onSelected: (bool selected) {
                               if (selected) {
                                 Navigator.of(context).pushNamed("/view-bills");
                               }
                             }),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         ChoiceChip(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 14, vertical: 8),
                             label: Text("Profile",
                                 style: TextStyle(
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             selected: profileSelected,
                             selectedColor: Colors.black,
                             backgroundColor: Colors.white,
-                            side: BorderSide(color: Colors.black, width: 1),
+                            side: const BorderSide(color: Colors.black, width: 1),
                             onSelected: (bool selected) {
                               if (selected) {
                                 Navigator.of(context).pushNamed("/profile");
@@ -142,11 +142,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             }),
                       ]),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
-                  padding: EdgeInsets.only(left: 30),
+                  padding: const EdgeInsets.only(left: 30),
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  child: const Text(
                     "CATEGORIES",
                     style: TextStyle(
                         color: Colors.black,
@@ -155,13 +155,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         letterSpacing: 2),
                   ),
                 ),
-                BuildItemsWidget(),
-                SizedBox(height: 200)
+                const BuildItemsWidget(),
+                const SizedBox(height: 200)
               ],
             ),
             Container(
               alignment: Alignment.bottomCenter,
-              child: CartPreviewWidget(),
+              child: const CartPreviewWidget(),
             ),
           ],
         ),
@@ -188,11 +188,11 @@ class BuildItemsWidget extends StatelessWidget {
     return Column(
       children: [
         ItemsCategory(title: "Tiffin", itemsList: tiffinitems),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ItemsCategory(title: "Beverages", itemsList: beverageitems),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ItemsCategory(title: "Sandwiches", itemsList: sandwichitems),
-        SizedBox(height: 10)
+        const SizedBox(height: 10)
       ],
     );
   }
@@ -213,9 +213,9 @@ class ItemsCategory extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 55),
+            const SizedBox(height: 55),
             CategorySubheadingWidget(title: title),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             CardsListViewWidget(itemsList: itemsList),
           ],
         )
@@ -231,14 +231,14 @@ class CardsListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 700,
       height: 210,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(left: 40),
+        padding: const EdgeInsets.only(left: 40),
         itemCount: itemsList.length,
-        physics: PageScrollPhysics(),
+        physics: const PageScrollPhysics(),
         itemBuilder: (context, index) => itemCardConstructor(itemsList[index]),
       ),
     );
@@ -255,7 +255,7 @@ class CategorySubheadingWatermark extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
           color: Color(0xffE7E7E7),
           fontFamily: "Spicy Chicken",
           fontSize: 120,
@@ -275,15 +275,15 @@ class CategorySubheadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 32),
-      padding: EdgeInsets.symmetric(vertical: 7, horizontal: 17),
+      margin: const EdgeInsets.only(left: 32),
+      padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 17),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(17),
         color: Colors.black,
       ),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
             color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
       ),
     );

@@ -27,34 +27,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
+      body: SizedBox(
           width: double.infinity,
           height: double.infinity,
           child: Stack(
             children: [
-              ProfileWatermark(),
+              const ProfileWatermark(),
               Container(
                 child: ListView(
                   children: [
                     Column(
                       children: [
-                        CustomAppBar(),
-                        SizedBox(height: 20),
-                        ProfilePicture(),
-                        SizedBox(height: 32),
-                        Name(),
-                        SizedBox(height: 5),
-                        Text(
+                        const CustomAppBar(),
+                        const SizedBox(height: 20),
+                        const ProfilePicture(),
+                        const SizedBox(height: 32),
+                        const Name(),
+                        const SizedBox(height: 5),
+                        const Text(
                           "Student",
                           style: TextStyle(
                               fontSize: 13,
                               color: Colors.black38,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 20),
-                        BalanceWidget(),
-                        SizedBox(height: 50),
-                        Row(
+                        const SizedBox(height: 20),
+                        const BalanceWidget(),
+                        const SizedBox(height: 50),
+                        const Row(
                           children: [
                             SizedBox(width: 43),
                             Text(
@@ -66,22 +66,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         ReadOnlyTextField(
                           controller: nameController,
                           label: "Name",
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         ReadOnlyTextField(
                           controller: rollNumberController,
                           label: "Roll Number",
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         EditableTextField(
                           controller: phoneController,
                           label: "Phone Number",
                         ),
-                        SizedBox(height: 50),
+                        const SizedBox(height: 50),
                       ],
                     ),
                   ],
@@ -106,28 +106,28 @@ class ReadOnlyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 43),
+      margin: const EdgeInsets.symmetric(horizontal: 43),
       child: TextField(
         readOnly: true,
         controller: controller,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.black,
           fontSize: 16,
           fontWeight: FontWeight.w700,
         ),
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             color: Colors.black,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+            borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(19),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+            borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(19),
           ),
         ),
@@ -149,33 +149,33 @@ class EditableTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 43),
+      margin: const EdgeInsets.symmetric(horizontal: 43),
       child: TextField(
         controller: controller,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.black,
           fontSize: 16,
           fontWeight: FontWeight.w700,
         ),
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             color: Colors.black,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
           suffixText: "Tap to edit",
-          suffixStyle: TextStyle(
+          suffixStyle: const TextStyle(
             color: Colors.black45,
             fontSize: 13,
             fontWeight: FontWeight.bold,
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+            borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(19),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+            borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(19),
           ),
         ),
@@ -192,38 +192,38 @@ class BalanceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 43),
-      padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 43),
+      padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+      decoration: BoxDecoration(
+        color: const Color(0xffFFC15B),
+        borderRadius: BorderRadius.circular(19),
+        border: Border.all(
+          color: const Color(0xff595959),
+          width: 2,
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             "Balance in ID Card",
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 17, vertical: 5),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 5),
+            decoration: BoxDecoration(
+              color: const Color(0xff4B2900),
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: const Text(
               "₹ 100",
               style: TextStyle(
                   fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
-            decoration: BoxDecoration(
-              color: Color(0xff4B2900),
-              borderRadius: BorderRadius.circular(14),
-            ),
           )
         ],
-      ),
-      decoration: BoxDecoration(
-        color: Color(0xffFFC15B),
-        borderRadius: BorderRadius.circular(19),
-        border: Border.all(
-          color: Color(0xff595959),
-          width: 2,
-        ),
       ),
     );
   }
@@ -237,15 +237,15 @@ class Name extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 22, vertical: 8),
-      child: Text(
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 8),
+      decoration: BoxDecoration(
+        color: const Color(0xffFFC698),
+        borderRadius: BorderRadius.circular(18.5),
+      ),
+      child: const Text(
         "Rahul",
         style: TextStyle(
             fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
-      ),
-      decoration: BoxDecoration(
-        color: Color(0xffFFC698),
-        borderRadius: BorderRadius.circular(18.5),
       ),
     );
   }
@@ -261,7 +261,7 @@ class ProfilePicture extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: Color(0xffEDEDED),
+          color: const Color(0xffEDEDED),
           width: 4,
         ),
         borderRadius:
@@ -270,7 +270,7 @@ class ProfilePicture extends StatelessWidget {
       child: ClipRRect(
         borderRadius:
             BorderRadius.circular(MediaQuery.of(context).size.width * 0.1),
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.35,
           height: MediaQuery.of(context).size.width * 0.35,
           child: Image.asset(
@@ -292,7 +292,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final foodItemsData = Provider.of<FoodItems>(context);
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+      margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -301,7 +301,7 @@ class CustomAppBar extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Colors.black,
               size: 30,
@@ -309,7 +309,7 @@ class CustomAppBar extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: () {
-                final storage = new FlutterSecureStorage();
+                const storage = FlutterSecureStorage();
                 storage.delete(key: "loggedInUserDisplayName");
                 storage.delete(key: "loggedInUserPhotoUrl");
                 storage.delete(key: "loggedInUserServerAuthCode");
@@ -321,18 +321,18 @@ class CustomAppBar extends StatelessWidget {
 
                 Navigator.pushReplacementNamed(context, "/home");
               },
-              child: Text("Log out",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
                 backgroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(32.0),
                 ),
-              )),
+              ),
+              child: const Text("Log out",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ))),
         ],
       ),
     );
@@ -347,19 +347,19 @@ class ProfileWatermark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 80),
+      margin: const EdgeInsets.only(top: 80),
       alignment: Alignment.topCenter,
       child: GradientText(
         'PROFILE',
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 87, fontWeight: FontWeight.bold, fontFamily: "Cocogoose"),
         gradient: LinearGradient(
           colors: [
-            Color.fromARGB(255, 149, 149, 149),
+            const Color.fromARGB(255, 149, 149, 149),
             // Colors.black,
-            Color(0xffFFFFFF).withOpacity(0),
+            const Color(0xffFFFFFF).withOpacity(0),
           ],
-          transform: GradientRotation(3.14 / 2),
+          transform: const GradientRotation(3.14 / 2),
         ),
       ),
     );
@@ -368,7 +368,7 @@ class ProfileWatermark extends StatelessWidget {
 
 class GradientText extends StatelessWidget {
   const GradientText(
-    this.text, {
+    this.text, {super.key, 
     required this.gradient,
     this.style,
   });

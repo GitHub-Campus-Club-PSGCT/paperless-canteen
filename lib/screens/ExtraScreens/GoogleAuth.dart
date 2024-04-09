@@ -169,7 +169,7 @@ class _GoogleAuthScreenState extends State<GoogleAuthScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Google Auth"),
+        title: const Text("Google Auth"),
       ),
       body: _buildBody(),
     );
@@ -186,7 +186,7 @@ class LandingScreen extends StatelessWidget {
     return Container(
         alignment: Alignment.center,
         child: ElevatedButton(
-          child: Text("Login with Google"),
+          child: const Text("Login with Google"),
           onPressed: () {},
         ));
   }

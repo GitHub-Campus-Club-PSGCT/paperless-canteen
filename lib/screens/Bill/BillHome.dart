@@ -24,7 +24,7 @@ class _BillHomeScreenState extends State<BillHomeScreen> {
     print(counters);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bill Menu'),
+        title: const Text('Bill Menu'),
         actions: [
           IconButton(
             onPressed: () {
@@ -34,12 +34,12 @@ class _BillHomeScreenState extends State<BillHomeScreen> {
                 MaterialPageRoute(builder: (context) => const PanaromaScreen()),
               );
             },
-            icon: Icon(Icons.help),
+            icon: const Icon(Icons.help),
           ),
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -52,15 +52,15 @@ class _BillHomeScreenState extends State<BillHomeScreen> {
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 32),
+                  padding: const EdgeInsets.symmetric(vertical: 32),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                 ),
-                child: Text('Counter 1'),
+                child: const Text('Counter 1'),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: ElevatedButton(
                 onPressed: counters.contains(2)
@@ -69,15 +69,15 @@ class _BillHomeScreenState extends State<BillHomeScreen> {
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 32),
+                  padding: const EdgeInsets.symmetric(vertical: 32),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                 ),
-                child: Text('Counter 2'),
+                child: const Text('Counter 2'),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: ElevatedButton(
                 onPressed: counters.contains(3)
@@ -86,15 +86,15 @@ class _BillHomeScreenState extends State<BillHomeScreen> {
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 32),
+                  padding: const EdgeInsets.symmetric(vertical: 32),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                 ),
-                child: Text('Counter 3'),
+                child: const Text('Counter 3'),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: ElevatedButton(
                 onPressed: counters.contains(4)
@@ -103,15 +103,15 @@ class _BillHomeScreenState extends State<BillHomeScreen> {
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 32),
+                  padding: const EdgeInsets.symmetric(vertical: 32),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                 ),
-                child: Text('Counter 4'),
+                child: const Text('Counter 4'),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: ElevatedButton(
                 onPressed: counters.contains(5)
@@ -120,12 +120,12 @@ class _BillHomeScreenState extends State<BillHomeScreen> {
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 32),
+                  padding: const EdgeInsets.symmetric(vertical: 32),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                 ),
-                child: Text('Counter 5'),
+                child: const Text('Counter 5'),
               ),
             ),
           ],

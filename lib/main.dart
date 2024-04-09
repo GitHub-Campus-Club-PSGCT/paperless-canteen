@@ -37,16 +37,16 @@ class MyApp extends StatelessWidget {
           colorScheme:
               ColorScheme.fromSwatch().copyWith(secondary: Colors.orange),
         ),
-        home: HomeScreen(),
+        home: const HomeScreen(),
         debugShowCheckedModeBanner: false,
         routes: {
-          "/qrcode-generator": (context) => QRGenerator(),
-          "/google-auth": (context) => GoogleAuthScreen(),
+          "/qrcode-generator": (context) => const QRGenerator(),
+          "/google-auth": (context) => const GoogleAuthScreen(),
           // "/login": (context) => LoginScreen(),
-          "/home": (context) => HomeScreen(),
-          "/view-bills": (context) => ViewBillsScreen(),
-          "/profile": (context) => ProfileScreen(),
-          "/panaroma": (context) => PanaromaScreen(),
+          "/home": (context) => const HomeScreen(),
+          "/view-bills": (context) => const ViewBillsScreen(),
+          "/profile": (context) => const ProfileScreen(),
+          "/panaroma": (context) => const PanaromaScreen(),
         },
       ),
     );
@@ -61,9 +61,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Paperless Canteen")),
-      body: QRGenerator(),
-      drawer: DrawerWidget(),
+      appBar: AppBar(title: const Text("Paperless Canteen")),
+      body: const QRGenerator(),
+      drawer: const DrawerWidget(),
     );
   }
 }
@@ -80,6 +80,7 @@ class DrawerWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
+            decoration: const BoxDecoration(color: Colors.blue),
             child: Row(
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -88,8 +89,8 @@ class DrawerWidget extends StatelessWidget {
                   color: Colors.white.withOpacity(0.8),
                   size: 30,
                 ),
-                SizedBox(width: 10),
-                Text(
+                const SizedBox(width: 10),
+                const Text(
                   "Paperless Canteen",
                   style: TextStyle(
                       fontSize: 20,
@@ -98,10 +99,9 @@ class DrawerWidget extends StatelessWidget {
                 ),
               ],
             ),
-            decoration: BoxDecoration(color: Colors.blue),
           ),
           ListTile(
-            title: Row(
+            title: const Row(
               children: [
                 Icon(Icons.gpp_good_rounded),
                 SizedBox(width: 10),
@@ -111,11 +111,11 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               // Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
             },
           ),
           ListTile(
-            title: Row(
+            title: const Row(
               children: [
                 Icon(Icons.home_rounded),
                 SizedBox(width: 10),
@@ -125,7 +125,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               // Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
             },
           ),
           // ListTile(
@@ -143,7 +143,7 @@ class DrawerWidget extends StatelessWidget {
           //   },
           // ),
           ListTile(
-            title: Row(
+            title: const Row(
               children: [
                 Icon(Icons.person_rounded),
                 SizedBox(width: 10),
@@ -153,11 +153,11 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               // Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ProfileScreen()));
+                  MaterialPageRoute(builder: (context) => const ProfileScreen()));
             },
           ),
           ListTile(
-            title: Row(
+            title: const Row(
               children: [
                 Icon(Icons.insert_drive_file_rounded),
                 SizedBox(width: 10),
@@ -167,11 +167,11 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               // Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BillHomeScreen()));
+                  MaterialPageRoute(builder: (context) => const BillHomeScreen()));
             },
           ),
           ListTile(
-            title: Row(
+            title: const Row(
               children: [
                 Icon(Icons.qr_code_rounded),
                 SizedBox(width: 10),
@@ -181,11 +181,11 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               // Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => QRGenerator()));
+                  MaterialPageRoute(builder: (context) => const QRGenerator()));
             },
           ),
           ListTile(
-            title: Row(
+            title: const Row(
               children: [
                 Icon(Icons.qr_code_scanner_rounded),
                 SizedBox(width: 10),
@@ -199,7 +199,7 @@ class DrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Row(
+            title: const Row(
               children: [
                 Icon(Icons.gpp_good_rounded),
                 SizedBox(width: 10),
@@ -209,11 +209,11 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               // Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => GoogleAuthScreen()));
+                  MaterialPageRoute(builder: (context) => const GoogleAuthScreen()));
             },
           ),
           ListTile(
-            title: Row(
+            title: const Row(
               children: [
                 Icon(Icons.panorama_fish_eye_rounded),
                 SizedBox(width: 10),
@@ -223,7 +223,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               // Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => PanaromaScreen()));
+                  MaterialPageRoute(builder: (context) => const PanaromaScreen()));
             },
           ),
         ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:paperless_canteen/constants/items.dart';
 import 'package:paperless_canteen/providers/foodItem.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +41,7 @@ class _ItemCardState extends State<ItemCard> {
   Widget build(BuildContext context) {
     final foodItemsData = Provider.of<FoodItems>(context);
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         width: 168,
         height: 210,
         decoration: BoxDecoration(
@@ -50,12 +49,12 @@ class _ItemCardState extends State<ItemCard> {
         child: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 100),
+              padding: const EdgeInsets.only(top: 100),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    child: Container(
+                    child: const SizedBox(
                       width: 28,
                       height: 76,
                       child: Image(
@@ -65,13 +64,14 @@ class _ItemCardState extends State<ItemCard> {
                     onTap: () {
                       HapticFeedback.mediumImpact();
                       setState(() {
-                        if (widget.itemCounter > 0)
+                        if (widget.itemCounter > 0) {
                           foodItemsData.decrementItemCounter(widget.id);
+                        }
                       });
                     },
                   ),
                   GestureDetector(
-                    child: Container(
+                    child: const SizedBox(
                       width: 28,
                       height: 76,
                       child: Image(
@@ -93,16 +93,16 @@ class _ItemCardState extends State<ItemCard> {
               children: [
                 Column(
                   children: [
-                    SizedBox(height: 26),
+                    const SizedBox(height: 26),
                     Container(
-                      padding: EdgeInsets.only(left: 20, right: 9),
+                      padding: const EdgeInsets.only(left: 20, right: 9),
                       child: Row(
                         children: [
-                          Container(
+                          SizedBox(
                             width: 120,
                             child: Text(
                               widget.name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 22,
                                   fontWeight: FontWeight.w700),
@@ -111,25 +111,25 @@ class _ItemCardState extends State<ItemCard> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(width: 18),
+                        const SizedBox(width: 18),
                         Container(
                           padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                           alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(33),
+                              color: const Color.fromARGB(255, 86, 47, 0)),
                           child: Text(
-                            "₹ " + widget.price.toString(),
-                            style: TextStyle(
+                            "₹ ${widget.price}",
+                            style: const TextStyle(
                                 color: Color(0xffFFBC3A),
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700),
                           ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(33),
-                              color: Color.fromARGB(255, 86, 47, 0)),
                         ),
                       ],
                     )
@@ -137,7 +137,7 @@ class _ItemCardState extends State<ItemCard> {
                 ),
                 widget.itemCounter == 0
                     ? GestureDetector(
-                        child: AddButton(),
+                        child: const AddButton(),
                         onTap: () {
                           HapticFeedback.mediumImpact();
                           setState(() {
@@ -168,16 +168,16 @@ class AddButton extends StatelessWidget {
           width: 52,
           height: 52,
           alignment: Alignment.center,
-          child: Text(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(33),
+              color: Colors.white.withOpacity(0.95)),
+          child: const Text(
             "ADD",
             style: TextStyle(
                 color: Colors.black, fontSize: 14, fontWeight: FontWeight.w700),
           ),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(33),
-              color: Colors.white.withOpacity(0.95)),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
       ],
     );
   }
@@ -196,7 +196,7 @@ class _CounterWidgetState extends State<CounterWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: 65,
           width: 60,
           child: Stack(
@@ -205,36 +205,36 @@ class _CounterWidgetState extends State<CounterWidget> {
               Positioned(
                 top: 43,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                  child: Text(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(33),
+                      color: Colors.black),
+                  child: const Text(
                     "Added",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 11,
                         fontWeight: FontWeight.w700),
                   ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(33),
-                      color: Colors.black),
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(33),
+                    color: Colors.white.withOpacity(0.95)),
                 child: Text(
-                  "x " + widget.itemCounter.toString(),
-                  style: TextStyle(
+                  "x ${widget.itemCounter}",
+                  style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.w700),
                 ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(33),
-                    color: Colors.white.withOpacity(0.95)),
               ),
             ],
           ),
         ),
-        SizedBox(height: 22),
+        const SizedBox(height: 22),
       ],
     );
   }

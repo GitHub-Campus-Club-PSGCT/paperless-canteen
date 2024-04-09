@@ -86,17 +86,17 @@ class FoodItems with ChangeNotifier {
       imagePath: "assets/images/blackbg.png",
       id: "1008",
       status: -1);
-  GoogleSignIn _googleSignIn = GoogleSignIn(
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: [
       'email',
     ],
   );
 
-  HashMap<String, Item> _itemMap = HashMap<String, Item>();
-  List<Item> _items = [];
-  List<Item> _cartItems = [];
-  List<Bill> _bills = [];
-  List<Bill> _previousBills = [];
+  final HashMap<String, Item> _itemMap = HashMap<String, Item>();
+  final List<Item> _items = [];
+  final List<Item> _cartItems = [];
+  final List<Bill> _bills = [];
+  final List<Bill> _previousBills = [];
   int _totalPrice = 0;
   int availableBillId = 1001;
   GoogleSignInAccount? _currentUser;
@@ -199,18 +199,10 @@ class FoodItems with ChangeNotifier {
   }
 
   void generateBill() {
-    String dateTime = DateTime.now().day.toString() +
-        "/" +
-        DateTime.now().month.toString() +
-        "/" +
-        DateTime.now().year.toString() +
-        " " +
-        DateTime.now().hour.toString() +
-        ":" +
-        DateTime.now().minute.toString();
+    String dateTime = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year} ${DateTime.now().hour}:${DateTime.now().minute}";
 
     List<Item> items = [];
-    _cartItems.forEach((element) {
+    for (var element in _cartItems) {
       items.add(Item(
           name: element.name,
           tamilName: element.tamilName,
@@ -221,7 +213,7 @@ class FoodItems with ChangeNotifier {
           id: element.id,
           itemCounter: element.itemCounter,
           status: element.status));
-    });
+    }
 
     Bill bill = Bill(
         id: (availableBillId++).toString(),

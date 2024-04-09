@@ -10,12 +10,12 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.only(top: 20, bottom: 8, left: 32, right: 15),
+      padding: const EdgeInsets.only(top: 20, bottom: 8, left: 32, right: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "Bills",
             style: TextStyle(
               fontSize: 40,
@@ -26,13 +26,13 @@ class CustomAppBar extends StatelessWidget {
           ),
           Column(
             children: [
-              Container(
+              SizedBox(
                 width: 38,
                 height: 38,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.zero,
-                      backgroundColor: Color(0xffFFE3CD),
+                      backgroundColor: const Color(0xffFFE3CD),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16)),
@@ -40,16 +40,16 @@ class CustomAppBar extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, "/panaroma");
                     },
-                    child: Icon(
+                    child: const Icon(
                       CupertinoIcons.question,
                       color: Color(0xff4B2900),
                       size: 20,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
-              Text(
+              const Text(
                 "Find the Counter",
                 style: TextStyle(
                   fontSize: 11,

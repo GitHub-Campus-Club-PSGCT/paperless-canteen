@@ -57,7 +57,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         // leadingWidth: 100,
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
@@ -75,17 +75,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
             alignment: Alignment.center,
             width: 46,
             height: 40,
-            margin: EdgeInsets.only(right: 32, top: 10),
+            margin: const EdgeInsets.only(right: 32, top: 10),
+            decoration: BoxDecoration(
+              color: const Color(0xffFFC888),
+              borderRadius: BorderRadius.circular(22),
+            ),
             child: Text(
               foodItemsData.cartItems.length.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 19,
                   fontWeight: FontWeight.w700),
-            ),
-            decoration: BoxDecoration(
-              color: Color(0xffFFC888),
-              borderRadius: BorderRadius.circular(22),
             ),
           ),
         ],
@@ -93,11 +93,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Container(
-            margin: EdgeInsets.only(top: 7, left: 36, bottom: 12),
+            margin: const EdgeInsets.only(top: 7, left: 36, bottom: 12),
             alignment: Alignment.centerLeft,
-            child: Text(
+            child: const Text(
               "Cart",
               style: TextStyle(
                   fontSize: 16,
@@ -106,12 +106,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
           ),
           for (Item item in foodItemsData.cartItems) CartItemCard(item: item),
-          SizedBox(height: 15),
-          BulkBookingComponent(),
-          _LineHeading(title: "pay using"),
+          const SizedBox(height: 15),
+          const BulkBookingComponent(),
+          const _LineHeading(title: "pay using"),
           Row(
             children: [
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Expanded(
                 child: PaymentModeSelectionButton(
                   title: "GPay",
@@ -140,31 +140,31 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                 ),
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           if (psgIdSelected)
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 45),
+              margin: const EdgeInsets.symmetric(horizontal: 45),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: "Enter your PSG ID",
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     color: Colors.black26,
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.black,
                       width: 1,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.black,
                       width: 2,
                     ),
@@ -172,32 +172,32 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ),
             ),
-          SizedBox(height: 10),
-          _LineHeading(title: "Total"),
+          const SizedBox(height: 10),
+          const _LineHeading(title: "Total"),
           TotalComponent(
             items: foodItemsData.cartItems.length,
             total: foodItemsData.getCartTotal,
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 21, horizontal: 38),
+            margin: const EdgeInsets.symmetric(vertical: 21, horizontal: 38),
             height: 51,
             child: ElevatedButton(
               onPressed: () {
                 foodItemsData.generateBill();
                 Navigator.pushReplacementNamed(context, "/view-bills");
               },
-              child: Text(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+              child: const Text(
                 "Order Now",
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
             ),
@@ -222,14 +222,14 @@ class _TotalComponentState extends State<TotalComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
+      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 "TOTAL",
                 style: TextStyle(
                     fontSize: 16,
@@ -238,8 +238,8 @@ class _TotalComponentState extends State<TotalComponent> {
                     fontFamily: "Cocogoose"),
               ),
               Text(
-                widget.items.toString() + " items",
-                style: TextStyle(
+                "${widget.items} items",
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
                   color: Colors.black45,
@@ -248,18 +248,18 @@ class _TotalComponentState extends State<TotalComponent> {
             ],
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            decoration: BoxDecoration(
+              color: const Color(0xffFFA841),
+              borderRadius: BorderRadius.circular(22),
+            ),
             child: Text(
-              "₹ " + widget.total.toString(),
-              style: TextStyle(
+              "₹ ${widget.total}",
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: Colors.black,
               ),
-            ),
-            decoration: BoxDecoration(
-              color: Color(0xffFFA841),
-              borderRadius: BorderRadius.circular(22),
             ),
           ),
         ],
@@ -295,7 +295,7 @@ class _PaymentModeSelectionButtonState
         widget.onPressed();
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         height: 51,
         decoration: BoxDecoration(
           color: widget.selected ? Colors.black : Colors.white,
@@ -328,34 +328,34 @@ class _PaymentModeSelectionButtonState
 }
 
 class _LineHeading extends StatelessWidget {
-  _LineHeading({super.key, required this.title});
+  const _LineHeading({required this.title});
 
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 28, vertical: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 28, vertical: 20),
       child: Row(children: [
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(right: 16),
+            margin: const EdgeInsets.only(right: 16),
             height: 1,
-            color: Color(0xffE5E5E5),
+            color: const Color(0xffE5E5E5),
           ),
         ),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w700,
               color: Color(0xffBDBDBD)),
         ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 16),
+            margin: const EdgeInsets.only(left: 16),
             height: 1,
-            color: Color(0xffE5E5E5),
+            color: const Color(0xffE5E5E5),
           ),
         ),
       ]),
@@ -373,7 +373,7 @@ class BulkBookingComponent extends StatefulWidget {
 class _BulkBookingComponentState extends State<BulkBookingComponent> {
   @override
   Widget build(BuildContext context) {
-    return Row();
+    return const Row();
   }
 }
 
@@ -391,8 +391,16 @@ class _CartItemCardState extends State<CartItemCard> {
   Widget build(BuildContext context) {
     final foodItemsData = Provider.of<FoodItems>(context);
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-      padding: EdgeInsets.symmetric(horizontal: 17, vertical: 13),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 13),
+      decoration: BoxDecoration(
+        color: const Color(0xffFFFAF1),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: const Color(0xff4B2900).withOpacity(0.08),
+          width: 2,
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -407,27 +415,27 @@ class _CartItemCardState extends State<CartItemCard> {
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     widget.item.category.toUpperCase(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w700,
                         color: Colors.black),
                   ),
                   Text(
                     widget.item.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Colors.black),
                   ),
                   Text(
-                    "₹ " + widget.item.price.toString(),
-                    style: TextStyle(
+                    "₹ ${widget.item.price}",
+                    style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: Color(0xffF68122)),
@@ -440,21 +448,20 @@ class _CartItemCardState extends State<CartItemCard> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: const Color(0xff4B2900),
+                ),
                 child: Text(
-                  "₹ " +
-                      (widget.item.price * widget.item.itemCounter).toString(),
-                  style: TextStyle(
+                  "₹ ${widget.item.price * widget.item.itemCounter}",
+                  style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
                       color: Color(0xffFBA10F)),
                 ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: Color(0xff4B2900),
-                ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   GestureDetector(
@@ -464,32 +471,32 @@ class _CartItemCardState extends State<CartItemCard> {
                       });
                     },
                     child: Container(
-                      padding: EdgeInsets.all(3),
-                      child: Icon(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color(0xffFFFAF1),
+                        border: Border.all(
+                          color: const Color(0xff4B2900).withOpacity(0.48),
+                          width: 2,
+                        ),
+                      ),
+                      child: const Icon(
                         Icons.remove,
                         color: Colors.black,
                         size: 15,
                       ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xffFFFAF1),
-                        border: Border.all(
-                          color: Color(0xff4B2900).withOpacity(0.48),
-                          width: 2,
-                        ),
-                      ),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Text(
-                    "x " + widget.item.itemCounter.toString(),
-                    style: TextStyle(
+                    "x ${widget.item.itemCounter}",
+                    style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   GestureDetector(
                     onTap: () {
                       setState(() {
@@ -497,15 +504,15 @@ class _CartItemCardState extends State<CartItemCard> {
                       });
                     },
                     child: Container(
-                      padding: EdgeInsets.all(5),
-                      child: Icon(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color(0xff4B2900),
+                      ),
+                      child: const Icon(
                         Icons.add,
                         color: Colors.white,
                         size: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff4B2900),
                       ),
                     ),
                   ),
@@ -514,14 +521,6 @@ class _CartItemCardState extends State<CartItemCard> {
             ],
           ),
         ],
-      ),
-      decoration: BoxDecoration(
-        color: Color(0xffFFFAF1),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: Color(0xff4B2900).withOpacity(0.08),
-          width: 2,
-        ),
       ),
     );
   }

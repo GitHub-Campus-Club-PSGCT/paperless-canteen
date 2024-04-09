@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:paperless_canteen/constants/items.dart';
 import 'package:paperless_canteen/models/models.dart';
 import 'package:paperless_canteen/providers/foodItem.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +19,7 @@ class _SearchState extends State<SearchScreen> {
     final foodItemsData = Provider.of<FoodItems>(context).items;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search'),
+        title: const Text('Search'),
       ),
       body: SearchBody(
         allDishes: foodItemsData,
@@ -52,7 +51,7 @@ class _SearchBodyState extends State<SearchBody> {
             controller: controller,
             decoration: InputDecoration(
               hintText: 'Dish name',
-              prefixIcon: Icon(Icons.search),
+              prefixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
                 borderSide: const BorderSide(color: Colors.grey, width: 1),

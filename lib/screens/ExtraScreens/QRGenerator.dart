@@ -17,6 +17,9 @@ class _QRGeneratorState extends State<QRGenerator> {
       appBar: AppBar(title: const Text("QR Code Generator")),
       body: Container(
         alignment: Alignment.center,
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.white,
         child: QrImage(
           data: 'Welcome to Paperless Canteen! Bill #2412',
           version: QrVersions.auto,
@@ -33,9 +36,6 @@ class _QRGeneratorState extends State<QRGenerator> {
             );
           },
         ),
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.white,
       ),
     );
   }

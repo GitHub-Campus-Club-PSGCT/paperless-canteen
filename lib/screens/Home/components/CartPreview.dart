@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:paperless_canteen/models/models.dart';
 import 'package:paperless_canteen/providers/foodItem.dart';
-import 'package:paperless_canteen/screens/Bill/BillScreen.dart';
 import 'package:paperless_canteen/screens/Payment/PaymentScreen.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +13,7 @@ class CartPreviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final foodItemsData = Provider.of<FoodItems>(context);
     final cartItems = foodItemsData.cartItems;
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.width * 1 / 3,
       child: Stack(
         children: [
@@ -25,12 +24,12 @@ class CartPreviewWidget extends StatelessWidget {
                 openExtendedPreview(context);
               }
             },
-            child: Image(
+            child: const Image(
               image: AssetImage("assets/images/CartBG.png"),
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -38,25 +37,25 @@ class CartPreviewWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 10),
+                      decoration: BoxDecoration(
+                          color: const Color.fromRGBO(235, 149, 49, 1),
+                          borderRadius: BorderRadius.circular(22)),
                       child: Text(
-                        "₹ " + foodItemsData.getCartTotal.toString(),
-                        style: TextStyle(
+                        "₹ ${foodItemsData.getCartTotal}",
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontWeight: FontWeight.w700),
                       ),
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(235, 149, 49, 1),
-                          borderRadius: BorderRadius.circular(22)),
                     ),
-                    SizedBox(width: 13),
+                    const SizedBox(width: 13),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "Cart",
                           style: TextStyle(
                               color: Colors.white,
@@ -64,8 +63,8 @@ class CartPreviewWidget extends StatelessWidget {
                               fontWeight: FontWeight.w700),
                         ),
                         Text(
-                          cartItems.length.toString() + " items",
-                          style: TextStyle(
+                          "${cartItems.length} items",
+                          style: const TextStyle(
                               color: Color(0xff8C8C8C),
                               fontSize: 14,
                               fontWeight: FontWeight.w700),
@@ -79,18 +78,19 @@ class CartPreviewWidget extends StatelessWidget {
                     openExtendedPreview(context);
                   },
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    child: Text(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(79, 255, 255, 255),
+                      borderRadius: BorderRadius.circular(18),
+                      // border: Border.all(width: 2, color: Colors.white),
+                    ),
+                    child: const Text(
                       "View Cart",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w700),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(79, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(18),
-                      // border: Border.all(width: 2, color: Colors.white),
                     ),
                   ),
                 ),
@@ -105,7 +105,7 @@ class CartPreviewWidget extends StatelessWidget {
 
   Future<dynamic> openExtendedPreview(BuildContext context) {
     return showModalBottomSheet(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         // <-- SEE HERE
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(25.0),
@@ -114,14 +114,14 @@ class CartPreviewWidget extends StatelessWidget {
       backgroundColor: Colors.black,
       context: context,
       builder: (BuildContext context) {
-        return OpenMenu();
+        return const OpenMenu();
       },
     );
   }
 }
 
 Widget CartItems() {
-  final double size = 44;
+  const double size = 44;
   final imagePaths = [
     "assets/images/dosaImage.png",
     "assets/images/dosaImage.png",
@@ -138,7 +138,7 @@ Widget CartItems() {
 }
 
 Widget buildImage(String imagePath) {
-  final double borderSize = 1.2;
+  const double borderSize = 1.2;
 
   return Container(
     decoration: BoxDecoration(
@@ -157,7 +157,8 @@ class StackedWidgets extends StatelessWidget {
   final List<Widget> items;
   final double size;
 
-  const StackedWidgets({Key? key, required this.items, this.size = 44});
+  const StackedWidgets(
+      {superKey, Key? key, required this.items, this.size = 44});
 
   @override
   Widget build(BuildContext context) {
@@ -170,7 +171,7 @@ class StackedWidgets extends StatelessWidget {
         child: items[i],
       ));
     }
-    if (items.length > 3)
+    if (items.length > 3) {
       allItems.add(Container(
         alignment: Alignment.center,
         margin: EdgeInsets.only(left: (21 * 3).toDouble()),
@@ -179,11 +180,12 @@ class StackedWidgets extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(size / 2)),
         child: Text(
-          "+" + (items.length - 3).toString(),
-          style: TextStyle(
+          "+${items.length - 3}",
+          style: const TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.w700),
         ),
       ));
+    }
     return Stack(
       children: allItems,
     );
@@ -209,14 +211,14 @@ num calculateTotalCost(itemInfo) {
 }
 
 class OpenMenu extends StatelessWidget {
-  OpenMenu({super.key});
+  const OpenMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
     final foodItemsData = Provider.of<FoodItems>(context);
 
     return SingleChildScrollView(
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       scrollDirection: Axis.vertical,
       child: Stack(
         children: [
@@ -229,8 +231,8 @@ class OpenMenu extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 20, left: 25),
-                      child: Text(
+                      margin: const EdgeInsets.only(top: 20, left: 25),
+                      child: const Text(
                         "Cart",
                         style: TextStyle(
                             color: Colors.white,
@@ -241,12 +243,12 @@ class OpenMenu extends StatelessWidget {
                     Container(
                       //close button
                       alignment: Alignment.topRight,
-                      margin: EdgeInsets.only(top: 20, right: 20),
+                      margin: const EdgeInsets.only(top: 20, right: 20),
                       child: IconButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.close,
                           color: Colors.white,
                           size: 30,
@@ -255,10 +257,10 @@ class OpenMenu extends StatelessWidget {
                     ),
                   ],
                 ),
-                if (foodItemsData.cartItems.length == 0)
+                if (foodItemsData.cartItems.isEmpty)
                   Container(
-                    margin: EdgeInsets.only(top: 30),
-                    child: Center(
+                    margin: const EdgeInsets.only(top: 30),
+                    child: const Center(
                       child: Text(
                         "No items in cart",
                         style: TextStyle(
@@ -270,7 +272,7 @@ class OpenMenu extends StatelessWidget {
                   ),
                 for (Item item in foodItemsData.cartItems)
                   OpenCartItem(item: item),
-                SizedBox(height: 200)
+                const SizedBox(height: 200)
               ],
             ),
           ),
@@ -280,7 +282,7 @@ class OpenMenu extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: Container(
               alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(43),
                     topRight: Radius.circular(43)),
@@ -289,7 +291,7 @@ class OpenMenu extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text("Total",
+                  const Text("Total",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -297,7 +299,7 @@ class OpenMenu extends StatelessWidget {
                   Container(
                     height: 160,
                     width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xff251400),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(43),
@@ -309,7 +311,7 @@ class OpenMenu extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left: 36, top: 20),
+                              margin: const EdgeInsets.only(left: 36, top: 20),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -317,22 +319,22 @@ class OpenMenu extends StatelessWidget {
                                     height: 40,
                                     width: 40,
                                     decoration: BoxDecoration(
-                                      color: Color(0xffFFDAAE),
+                                      color: const Color(0xffFFDAAE),
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Center(
                                       child: Text(
                                         foodItemsData.cartItems.length
                                             .toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 20,
                                             fontWeight: FontWeight.w700),
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 8),
-                                  Text(
+                                  const SizedBox(width: 8),
+                                  const Text(
                                     "items",
                                     style: TextStyle(
                                         color: Colors.white60,
@@ -343,12 +345,12 @@ class OpenMenu extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(right: 30, top: 20),
+                              margin: const EdgeInsets.only(right: 30, top: 20),
                               height: 40,
                               width: 90,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Color.fromARGB(255, 255, 157, 45),
+                                color: const Color.fromARGB(255, 255, 157, 45),
                                 // border: Border.all(
                                 //   color: Color(0xffFFDAAE),
                                 //   width: 4,
@@ -356,8 +358,8 @@ class OpenMenu extends StatelessWidget {
                               ),
                               child: Center(
                                 child: Text(
-                                  "₹ " + foodItemsData.getCartTotal.toString(),
-                                  style: TextStyle(
+                                  "₹ ${foodItemsData.getCartTotal}",
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700),
@@ -369,12 +371,12 @@ class OpenMenu extends StatelessWidget {
                         Container(
                           width: 190,
                           height: 55,
-                          margin: EdgeInsets.only(top: 20),
+                          margin: const EdgeInsets.only(top: 20),
                           decoration: BoxDecoration(
-                            color: Color(0xffFFC698),
+                            color: const Color(0xffFFC698),
                             borderRadius: BorderRadius.circular(17),
                             border: Border.all(
-                              color: Color(0xffFF7200),
+                              color: const Color(0xffFF7200),
                               width: 3,
                             ),
                           ),
@@ -382,7 +384,7 @@ class OpenMenu extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
+                                const Text(
                                   "Order now",
                                   style: TextStyle(
                                       color: Colors.black,
@@ -391,11 +393,11 @@ class OpenMenu extends StatelessWidget {
                                 ),
                                 Stack(
                                   children: [
-                                    Icon(Icons.arrow_forward_ios_rounded,
+                                    const Icon(Icons.arrow_forward_ios_rounded,
                                         size: 15, color: Colors.black),
                                     Container(
-                                      margin: EdgeInsets.only(left: 7),
-                                      child: Icon(
+                                      margin: const EdgeInsets.only(left: 7),
+                                      child: const Icon(
                                         Icons.arrow_forward_ios_rounded,
                                         size: 15,
                                         color: Colors.black,
@@ -409,7 +411,8 @@ class OpenMenu extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => PaymentScreen()),
+                                    builder: (context) =>
+                                        const PaymentScreen()),
                               );
                             },
                           ),
@@ -442,17 +445,17 @@ class _OpenCartItemState extends State<OpenCartItem> {
     final foodItemsData = Provider.of<FoodItems>(context);
     return Column(
       children: [
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               alignment: Alignment.center,
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               height: 90,
               width: MediaQuery.of(context).size.width * 0.9,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(55, 54, 54, 0.933),
+                color: const Color.fromRGBO(55, 54, 54, 0.933),
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Row(
@@ -464,7 +467,7 @@ class _OpenCartItemState extends State<OpenCartItem> {
                       Container(
                         height: 55,
                         width: 55,
-                        margin: EdgeInsets.only(left: 17),
+                        margin: const EdgeInsets.only(left: 17),
                         child: ClipOval(
                           child: Image(
                             image: AssetImage(widget.item.imagePath),
@@ -477,30 +480,30 @@ class _OpenCartItemState extends State<OpenCartItem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left: 20),
+                            margin: const EdgeInsets.only(left: 20),
                             child: Text(
                               widget.item.category,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Color.fromARGB(255, 102, 101, 101),
                                   fontSize: 13,
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 20),
+                            margin: const EdgeInsets.only(left: 20),
                             child: Text(
                               widget.item.name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 20),
+                            margin: const EdgeInsets.only(left: 20),
                             child: Text(
-                              "₹" + widget.item.price.toString(),
-                              style: TextStyle(
+                              "₹${widget.item.price}",
+                              style: const TextStyle(
                                   color: Color.fromRGBO(255, 114, 0, 0.6),
                                   fontSize: 13,
                                   fontWeight: FontWeight.w700),
@@ -515,20 +518,18 @@ class _OpenCartItemState extends State<OpenCartItem> {
                       Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 17, top: 13),
+                            margin: const EdgeInsets.only(right: 17, top: 13),
                             alignment: Alignment.center,
                             height: 30,
                             width: 60,
                             decoration: BoxDecoration(
-                              color: Color(0xff4B2900),
+                              color: const Color(0xff4B2900),
                               borderRadius: BorderRadius.circular(25),
                             ),
                             child: Text(
-                              "₹" +
-                                  (widget.item.price * widget.item.itemCounter)
-                                      .toString(),
+                              "₹${widget.item.price * widget.item.itemCounter}",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Color(0xffFBA10F),
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700),
@@ -547,14 +548,14 @@ class _OpenCartItemState extends State<OpenCartItem> {
                                 right: 10, bottom: 12, top: 7),
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(5)),
+                                  const BorderRadius.all(Radius.circular(5)),
                               border: Border.all(width: 1, color: Colors.white),
                               color: Colors.black,
                             ),
                             alignment: Alignment.center,
                             child: MaterialButton(
-                              padding: EdgeInsets.all(0),
-                              child: Icon(
+                              padding: const EdgeInsets.all(0),
+                              child: const Icon(
                                 Icons.remove,
                                 color: Colors.white,
                                 size: 16,
@@ -565,8 +566,8 @@ class _OpenCartItemState extends State<OpenCartItem> {
                               },
                             ),
                           ),
-                          Text("x" + widget.item.itemCounter.toString(),
-                              style: TextStyle(
+                          Text("x${widget.item.itemCounter}",
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700)),
@@ -576,7 +577,7 @@ class _OpenCartItemState extends State<OpenCartItem> {
                             margin: const EdgeInsets.only(
                                 right: 15, left: 10, bottom: 12, top: 7),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(5),
                               ),
                               border: Border.all(
@@ -586,12 +587,12 @@ class _OpenCartItemState extends State<OpenCartItem> {
                               color: Colors.white,
                             ),
                             child: MaterialButton(
-                              padding: EdgeInsets.all(0),
+                              padding: const EdgeInsets.all(0),
                               onPressed: () {
                                 foodItemsData
                                     .incrementItemCounter(widget.item.id);
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.add,
                                 color: Colors.black,
                                 size: 16,

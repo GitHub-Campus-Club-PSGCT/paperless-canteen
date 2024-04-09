@@ -22,12 +22,12 @@ class _BillScreenState extends State<BillScreen> {
   Widget build(BuildContext context) {
     final foodItemsData = Provider.of<FoodItems>(context);
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         // leadingWidth: 100,
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
@@ -44,8 +44,8 @@ class _BillScreenState extends State<BillScreen> {
             children: [
               IconButton(
                 alignment: Alignment.center,
-                padding: EdgeInsets.only(left: 10),
-                icon: Image(
+                padding: const EdgeInsets.only(left: 10),
+                icon: const Image(
                   image: AssetImage("assets/icons/drawerIcon.png"),
                   width: 27,
                 ),
@@ -53,7 +53,7 @@ class _BillScreenState extends State<BillScreen> {
                   Scaffold.of(context).openDrawer();
                 },
               ),
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
             ],
           ),
         ),
@@ -62,17 +62,17 @@ class _BillScreenState extends State<BillScreen> {
             alignment: Alignment.center,
             width: 46,
             height: 40,
-            margin: EdgeInsets.only(right: 32, top: 10),
+            margin: const EdgeInsets.only(right: 32, top: 10),
+            decoration: BoxDecoration(
+              color: const Color(0xffFFC888),
+              borderRadius: BorderRadius.circular(22),
+            ),
             child: Text(
               widget.bill.items.length.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 19,
                   fontWeight: FontWeight.w700),
-            ),
-            decoration: BoxDecoration(
-              color: Color(0xffFFC888),
-              borderRadius: BorderRadius.circular(22),
             ),
           )
         ],
@@ -82,14 +82,14 @@ class _BillScreenState extends State<BillScreen> {
           Container(
             child: Column(
               children: [
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Container(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: const EdgeInsets.only(left: 10),
                   child: TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Row(
+                    child: const Row(
                       children: [
                         Icon(
                           Icons.arrow_back_ios_new_rounded,
@@ -108,50 +108,50 @@ class _BillScreenState extends State<BillScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Expanded(
                   flex: 1,
                   child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFBA10F),
+                        borderRadius: BorderRadius.circular(43)),
                     child: Column(children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
-                      Text(
+                      const Text(
                         "BILL",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.w900),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Expanded(
                         flex: 1,
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: BoxDecoration(
-                              color: Color(0xffFFFBF3),
+                              color: const Color(0xffFFFBF3),
                               borderRadius: BorderRadius.circular(43),
                               border: Border.all(
-                                  color: Color(0xff4B2900), width: 3)),
+                                  color: const Color(0xff4B2900), width: 3)),
                           child: ListView(
                             children: [
-                              SizedBox(height: 23),
+                              const SizedBox(height: 23),
                               if (widget.bill.items.isNotEmpty)
                                 for (Item item in widget.bill.items)
                                   BillCardWidget(item: item),
-                              SizedBox(height: 23),
+                              const SizedBox(height: 23),
                               QRCode(id: widget.bill.id),
                             ],
                           ),
                         ),
                       )
                     ]),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Color(0xffFBA10F),
-                        borderRadius: BorderRadius.circular(43)),
                   ),
                 ),
               ],
@@ -176,6 +176,7 @@ class QRCode extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
+      color: Colors.transparent,
       child: QrImage(
         data: id,
         version: QrVersions.auto,
@@ -183,7 +184,7 @@ class QRCode extends StatelessWidget {
         gapless: false,
         errorStateBuilder: (cxt, err) {
           return Container(
-            child: Center(
+            child: const Center(
               child: Text(
                 "Uh oh! Something went wrong...",
                 textAlign: TextAlign.center,
@@ -192,7 +193,6 @@ class QRCode extends StatelessWidget {
           );
         },
       ),
-      color: Colors.transparent,
     );
   }
 }
@@ -208,12 +208,21 @@ class BillCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 90,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+      decoration: BoxDecoration(
+          color: const Color(0xff4B2900).withOpacity(0.02),
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: const Color(0xff321A00).withOpacity(0.06),
+            width: 2,
+          )),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              SizedBox(width: 17),
+              const SizedBox(width: 17),
               ClipOval(
                 // decoration: BoxDecoration(
                 //     borderRadius: BorderRadius.circular(30)),
@@ -224,21 +233,21 @@ class BillCardWidget extends StatelessWidget {
                   fit: BoxFit.fitWidth,
                 ),
               ),
-              SizedBox(width: 11),
+              const SizedBox(width: 11),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     item.tamilName,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   ),
                   Text(
                     item.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Color(0xff666666),
                         fontSize: 16,
                         fontWeight: FontWeight.w700),
@@ -252,16 +261,16 @@ class BillCardWidget extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       left: 2,
                       top: 2,
                     ),
                     width: 46,
                     height: 46,
                     decoration: BoxDecoration(
-                        color: Color(0xffFFF7ED),
+                        color: const Color(0xffFFF7ED),
                         border: Border.all(
-                          color: Color(0xffEB9531),
+                          color: const Color(0xffEB9531),
                           width: 3,
                         ),
                         borderRadius: BorderRadius.circular(23)),
@@ -270,37 +279,28 @@ class BillCardWidget extends StatelessWidget {
                     width: 46,
                     height: 46,
                     alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFFF7ED),
+                        border: Border.all(
+                          color: const Color(0xffEB9531),
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.circular(23)),
                     child: Text(
                       item.itemCounter.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.w700),
                     ),
-                    decoration: BoxDecoration(
-                        color: Color(0xffFFF7ED),
-                        border: Border.all(
-                          color: Color(0xffEB9531),
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(23)),
                   ),
                 ],
               ),
-              SizedBox(width: 30),
+              const SizedBox(width: 30),
             ],
           )
         ],
       ),
-      height: 90,
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 7),
-      decoration: BoxDecoration(
-          color: Color(0xff4B2900).withOpacity(0.02),
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(
-            color: Color(0xff321A00).withOpacity(0.06),
-            width: 2,
-          )),
     );
   }
 }
@@ -323,10 +323,13 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
       alignment: Alignment.bottomCenter,
       child: Container(
         width: double.infinity,
+        height: 186,
+        decoration: BoxDecoration(
+            color: const Color(0xff4B2900), borderRadius: BorderRadius.circular(43)),
         child: Column(
           children: [
-            SizedBox(height: 9),
-            Text(
+            const SizedBox(height: 9),
+            const Text(
               "CLAIM",
               style: TextStyle(
                   color: Colors.white,
@@ -334,7 +337,7 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
                   letterSpacing: 1,
                   fontWeight: FontWeight.w900),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Container(
               width: double.infinity,
               height: 149,
@@ -342,32 +345,29 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(43),
               ),
-              padding: EdgeInsets.only(top: 3),
+              padding: const EdgeInsets.only(top: 3),
               child: Container(
                 width: double.infinity,
                 height: 145,
+                decoration: BoxDecoration(
+                  color: const Color(0xff251400),
+                  borderRadius: BorderRadius.circular(43),
+                ),
                 child: Column(
                   children: [
-                    SizedBox(height: 28),
+                    const SizedBox(height: 28),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 23),
+                      padding: const EdgeInsets.symmetric(horizontal: 23),
                       child: widget.isClaimed
-                          ? BillClaimedWidget()
+                          ? const BillClaimedWidget()
                           : openNewSlider(widget.bill, foodItemsData),
                     ),
                   ],
-                ),
-                decoration: BoxDecoration(
-                  color: Color(0xff251400),
-                  borderRadius: BorderRadius.circular(43),
                 ),
               ),
             ),
           ],
         ),
-        height: 186,
-        decoration: BoxDecoration(
-            color: Color(0xff4B2900), borderRadius: BorderRadius.circular(43)),
       ),
     );
   }
@@ -379,45 +379,45 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
       sliderButtonIconPadding: 0,
       sliderRotate: false,
       borderRadius: 26,
-      outerColor: Color(0xffFF7200),
+      outerColor: const Color(0xffFF7200),
       sliderButtonIcon: Container(
         height: 50,
         width: 175,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(22),
+          color: const Color(0xffFFC698),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
+            const Text(
               "CLAIM BILL",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 14,
                   fontWeight: FontWeight.w700),
             ),
-            SizedBox(width: 15),
+            const SizedBox(width: 15),
             Stack(
               children: [
-                Icon(
+                const Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 15,
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 7),
-                  child: Icon(
+                  margin: const EdgeInsets.only(left: 7),
+                  child: const Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 15,
                   ),
                 ),
               ],
             ),
-            SizedBox(width: 15)
+            const SizedBox(width: 15)
           ],
         ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
-          color: Color(0xffFFC698),
-        ),
       ),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Icon(
@@ -450,11 +450,11 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
         showCupertinoDialog(
             context: context,
             builder: (_) => CupertinoAlertDialog(
-                  title: Text("Claim the Bill?"),
-                  content: Text("You can't use the bill again"),
+                  title: const Text("Claim the Bill?"),
+                  content: const Text("You can't use the bill again"),
                   actions: [
                     CupertinoDialogAction(
-                      child: Text("No"),
+                      child: const Text("No"),
                       onPressed: () {
                         Navigator.of(context).pop();
                         print(UniqueKey());
@@ -469,7 +469,7 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
                       },
                     ),
                     CupertinoDialogAction(
-                      child: Text("Yes"),
+                      child: const Text("Yes"),
                       onPressed: () {
                         foodItemsData.claimBill(bill);
                         Navigator.of(context).pop();
@@ -481,6 +481,7 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
                     ),
                   ],
                 ));
+        return null;
       },
     );
   }
@@ -497,7 +498,7 @@ class _BillClaimedWidgetState extends State<BillClaimedWidget>
     with SingleTickerProviderStateMixin {
   late Animation animation;
   late AnimationController animationController = AnimationController(
-    duration: Duration(seconds: 2),
+    duration: const Duration(seconds: 2),
     vsync: this,
   );
 
@@ -505,7 +506,7 @@ class _BillClaimedWidgetState extends State<BillClaimedWidget>
   void initState() {
     super.initState();
     animationController = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       vsync: this,
     );
 
@@ -519,7 +520,11 @@ class _BillClaimedWidgetState extends State<BillClaimedWidget>
     return FadeTransition(
       opacity: animationController.drive(CurveTween(curve: Curves.easeIn)),
       child: Container(
-        child: Center(
+        height: 64,
+        decoration: BoxDecoration(
+            color: const Color(0xffFF7200).withOpacity(0.1),
+            borderRadius: BorderRadius.circular(26)),
+        child: const Center(
           child: Text(
             "Bill CLAIMED",
             style: TextStyle(
@@ -528,10 +533,6 @@ class _BillClaimedWidgetState extends State<BillClaimedWidget>
                 fontWeight: FontWeight.w700),
           ),
         ),
-        height: 64,
-        decoration: BoxDecoration(
-            color: Color(0xffFF7200).withOpacity(0.1),
-            borderRadius: BorderRadius.circular(26)),
       ),
     );
   }
