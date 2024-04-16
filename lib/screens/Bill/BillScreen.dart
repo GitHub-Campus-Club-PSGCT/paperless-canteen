@@ -177,7 +177,7 @@ class QRCode extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       color: Colors.transparent,
-      child: QrImage(
+      child: QrImageView(
         data: id,
         version: QrVersions.auto,
         size: 150,
@@ -325,7 +325,8 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
         width: double.infinity,
         height: 186,
         decoration: BoxDecoration(
-            color: const Color(0xff4B2900), borderRadius: BorderRadius.circular(43)),
+            color: const Color(0xff4B2900),
+            borderRadius: BorderRadius.circular(43)),
         child: Column(
           children: [
             const SizedBox(height: 9),

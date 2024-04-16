@@ -20,7 +20,7 @@ class _QRGeneratorState extends State<QRGenerator> {
         width: double.infinity,
         height: double.infinity,
         color: Colors.white,
-        child: QrImage(
+        child: QrImageView(
           data: 'Welcome to Paperless Canteen! Bill #2412',
           version: QrVersions.auto,
           size: 320,
