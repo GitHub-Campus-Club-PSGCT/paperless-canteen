@@ -28,6 +28,9 @@ jobs:
         channel: 'beta' # 'dev', 'alpha', default to: 'stable'
         # flutter-version: '1.12.x' # you can also specify exact version of flutter
     
+    # Clean the project.
+    - run: flutter clean
+
     # Get flutter dependencies.
     - run: flutter pub get
     
