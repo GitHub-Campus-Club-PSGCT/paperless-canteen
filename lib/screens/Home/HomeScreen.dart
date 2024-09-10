@@ -187,17 +187,18 @@ class BuildItemsWidget extends StatelessWidget {
         items.where((element) => element.category == "SANDWICH").toList();
     return Column(
       children: [
-        ItemsCategory(title: "Tiffin", itemsList: tiffinitems),
-        const SizedBox(height: 10),
-        ItemsCategory(title: "Juice", itemsList: beverageitems),
-        const SizedBox(height: 10),
-        ItemsCategory(title: "Sandwiches", itemsList: sandwichitems),
+        //ItemsCategory(title: "Tiffin", itemsList: tiffinitems),
+        //const SizedBox(height: 10),
+        ItemsCategory(title: "Juice", itemsList: beverageitems,),
+        const SizedBox(width: 10),
+        ItemsCategory(title: "Healthy", itemsList: sandwichitems),
         const SizedBox(height: 10)
       ],
     );
   }
 }
 
+// ignore: must_be_immutable
 class ItemsCategory extends StatelessWidget {
   String title;
   List<Item> itemsList;
@@ -224,6 +225,7 @@ class ItemsCategory extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CardsListViewWidget extends StatelessWidget {
   List<Item> itemsList;
 
@@ -264,6 +266,7 @@ class CategorySubheadingWatermark extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CategorySubheadingWidget extends StatelessWidget {
   CategorySubheadingWidget({
     Key? key,

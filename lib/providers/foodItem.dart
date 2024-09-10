@@ -15,7 +15,7 @@ class FoodItems with ChangeNotifier {
       id: "1000",
       status: -1);
   Item item1 = Item(
-      name: "Pomegranate",
+      name: "Papaya",
       tamilName: "கவின்ஸ் மில்க்",
       category: "BEVERAGE",
       price: 35,
@@ -51,7 +51,7 @@ class FoodItems with ChangeNotifier {
       id: "1004",
       status: -1);
   Item item5 = Item(
-      name: "PSG Lemon Juice",
+      name: "Mango",
       tamilName: "எலுமிச்சை ஜூஸ்",
       category: "BEVERAGE",
       price: 15,
@@ -60,7 +60,7 @@ class FoodItems with ChangeNotifier {
       id: "1005",
       status: -1);
   Item item6 = Item(
-      name: "Corn Cheese Sandwich",
+      name: "Sprouts",
       tamilName: "கார்ன் சீஸ் சாண்ட்விச்",
       category: "SANDWICH",
       price: 55,
@@ -69,7 +69,7 @@ class FoodItems with ChangeNotifier {
       id: "1006",
       status: -1);
   Item item7 = Item(
-      name: "Paneer Sandwich",
+      name: "Peanuts",
       tamilName: "பனீர் சாண்ட்விச்",
       category: "SANDWICH",
       price: 50,
@@ -78,7 +78,7 @@ class FoodItems with ChangeNotifier {
       id: "1007",
       status: -1);
   Item item8 = Item(
-      name: "Veg Sandwich",
+      name: "Corn",
       tamilName: "வெஜ் சாண்ட்விச்",
       category: "SANDWICH",
       price: 35,

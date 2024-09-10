@@ -104,7 +104,7 @@ class _ItemCardState extends State<ItemCard> {
                               widget.name,
                               style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 22,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
