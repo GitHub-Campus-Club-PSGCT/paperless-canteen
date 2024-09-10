@@ -189,7 +189,7 @@ class BuildItemsWidget extends StatelessWidget {
       children: [
         ItemsCategory(title: "Tiffin", itemsList: tiffinitems),
         const SizedBox(height: 10),
-        ItemsCategory(title: "Beverages", itemsList: beverageitems),
+        ItemsCategory(title: "Juice", itemsList: beverageitems),
         const SizedBox(height: 10),
         ItemsCategory(title: "Sandwiches", itemsList: sandwichitems),
         const SizedBox(height: 10)

@@ -6,7 +6,7 @@ import 'package:paperless_canteen/models/models.dart';
 
 class FoodItems with ChangeNotifier {
   Item item0 = Item(
-      name: "Maa Juice",
+      name: "Watermelon",
       tamilName: "மா ஜூஸ்",
       category: "BEVERAGE",
       price: 10,
@@ -15,7 +15,7 @@ class FoodItems with ChangeNotifier {
       id: "1000",
       status: -1);
   Item item1 = Item(
-      name: "Cavins Milk",
+      name: "Pomegranate",
       tamilName: "கவின்ஸ் மில்க்",
       category: "BEVERAGE",
       price: 35,
