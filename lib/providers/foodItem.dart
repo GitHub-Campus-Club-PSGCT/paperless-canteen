@@ -65,7 +65,7 @@ class FoodItems with ChangeNotifier {
       category: "SANDWICH",
       price: 55,
       counterId: 4,
-      imagePath: "assets/images/blackbg.png",
+      imagePath: "assets/images/sprout1.jpg",
       id: "1006",
       status: -1);
   Item item7 = Item(
@@ -74,7 +74,7 @@ class FoodItems with ChangeNotifier {
       category: "SANDWICH",
       price: 50,
       counterId: 4,
-      imagePath: "assets/images/blackbg.png",
+      imagePath: "assets/images/peanut.jpg",
       id: "1007",
       status: -1);
   Item item8 = Item(
@@ -83,7 +83,7 @@ class FoodItems with ChangeNotifier {
       category: "SANDWICH",
       price: 35,
       counterId: 4,
-      imagePath: "assets/images/blackbg.png",
+      imagePath: "assets/images/corn.jpeg",
       id: "1008",
       status: -1);
   final GoogleSignIn _googleSignIn = GoogleSignIn(
