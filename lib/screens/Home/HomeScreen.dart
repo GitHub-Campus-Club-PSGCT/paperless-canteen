@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.only(left: 30),
                   alignment: Alignment.centerLeft,
                   child: const Text(
-                    "CATEGORIES",
+                    "THIRST-E",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
