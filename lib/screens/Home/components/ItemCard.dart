@@ -45,6 +45,7 @@ class _ItemCardState extends State<ItemCard> {
         width: 168,
         height: 210,
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
             image: DecorationImage(image: AssetImage(widget.imagePath))),
         child: Stack(
           children: [

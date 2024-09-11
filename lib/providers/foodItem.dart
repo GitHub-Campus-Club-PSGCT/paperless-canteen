@@ -11,7 +11,7 @@ class FoodItems with ChangeNotifier {
       category: "BEVERAGE",
       price: 10,
       counterId: 4,
-      imagePath: "assets/images/blackbg.png",
+      imagePath: "assets/images/watermelon5.jpeg",
       id: "1000",
       status: -1);
   Item item1 = Item(
@@ -20,7 +20,7 @@ class FoodItems with ChangeNotifier {
       category: "BEVERAGE",
       price: 35,
       counterId: 4,
-      imagePath: "assets/images/blackbg.png",
+      imagePath: "assets/images/papaya1.jpeg",
       id: "1001",
       status: -1);
   Item item2 = Item(
@@ -56,7 +56,7 @@ class FoodItems with ChangeNotifier {
       category: "BEVERAGE",
       price: 15,
       counterId: 4,
-      imagePath: "assets/images/blackbg.png",
+      imagePath: "assets/images/mango3.webp",
       id: "1005",
       status: -1);
   Item item6 = Item(
