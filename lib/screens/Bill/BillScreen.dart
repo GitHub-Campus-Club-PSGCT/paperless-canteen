@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, unused_local_variable
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:paperless_canteen/main.dart';
@@ -341,7 +343,7 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
             const SizedBox(height: 8),
             Container(
               width: double.infinity,
-              height: 149,
+              height: 146,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(43),
@@ -356,7 +358,7 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
                 ),
                 child: Column(
                   children: [
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 40),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 23),
                       child: widget.isClaimed
@@ -383,7 +385,7 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
       outerColor: const Color(0xffFF7200),
       sliderButtonIcon: Container(
         height: 50,
-        width: 175,
+        width: 72,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
           color: const Color(0xffFFC698),
@@ -391,25 +393,20 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Text(
-              "CLAIM BILL",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700),
-            ),
             const SizedBox(width: 15),
             Stack(
               children: [
                 const Icon(
                   Icons.arrow_forward_ios_rounded,
-                  size: 15,
+                  size: 25,
+                  color: Colors.black38,
                 ),
                 Container(
-                  margin: const EdgeInsets.only(left: 7),
+                  margin: const EdgeInsets.only(left: 13),
                   child: const Icon(
                     Icons.arrow_forward_ios_rounded,
-                    size: 15,
+                    size: 25,
+                    
                   ),
                 ),
               ],
@@ -421,30 +418,27 @@ class _ClaimBillSectionState extends State<ClaimBillSection> {
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          const Text(
+              "CLAIM BILL",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700),
+            ),
+          SizedBox(width: 20),
           Icon(
             Icons.arrow_forward_ios_rounded,
             size: 15,
             color: Colors.black38,
           ),
-          SizedBox(width: 25),
+          SizedBox(width: 15),
           Icon(
             Icons.arrow_forward_ios_rounded,
             size: 15,
             color: Colors.black38,
           ),
-          SizedBox(width: 25),
-          Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: 15,
-            color: Colors.black38,
-          ),
-          SizedBox(width: 25),
-          Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: 15,
-            color: Colors.black38,
-          ),
-          SizedBox(width: 36),
+          SizedBox(width: 80),
+          
         ],
       ),
       onSubmit: () {
